@@ -4,6 +4,10 @@ from .models import Question
 from django.template import loader
 from django.http import Http404
 
+# def index(request):
+#     latest_question_list = Question.objects.order_by('-pub_date')[:5]
+#     output = ', '.join([q.question_text for q in latest_question_list])
+#     return HttpResponse(output)
 def index(request):
     latest_question_list = Question.objects.order_by('-pub_date')[:5]
     context = {
@@ -13,6 +17,7 @@ def index(request):
     # return HttpResponse("Hello,world! You are at the polls index.")
 
 def detail(request, question_id):
+    # return HttpResponse("You're looking at question %s." % question_id)
     try:
         question = Question.objects.get(pk=question_id)
     except Question.DoesNotExist:
